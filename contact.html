@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Vishal Kumar | Full-Stack Web Developer</title>
+  <meta name="description" content="Get in touch with Vishal Kumar for freelance web development projects. Available for new projects worldwide." />
+  <meta name="author" content="Vishal Kumar" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://vishalkumar.dev/contact.html" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+
+  <style>
+    /* ===== CONTACT GRID ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 72px;
+      align-items: start;
+      margin-top: 56px;
+    }
+
+    /* ===== LEFT SIDE ===== */
+    .contact-info-title {
+      font-size: 26px; font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+    .contact-info-desc {
+      font-size: 15px; color: var(--text-secondary);
+      line-height: 1.78; margin-bottom: 36px;
+    }
+    .contact-details {
+      display: flex; flex-direction: column;
+      gap: 14px; margin-bottom: 36px;
+    }
+    .cd-item {
+      display: flex; align-items: center; gap: 16px;
+      padding: 16px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .cd-item:hover { border-color: var(--border); transform: translateX(4px); }
+    .cd-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--accent-dim);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .cd-label {
+      font-family: var(--mono); font-size: 11px;
+      color: var(--text-muted); text-transform: uppercase;
+      letter-spacing: 1px; display: block;
+    }
+    .cd-value {
+      font-size: 14px; font-weight: 600;
+      color: var(--text-primary); display: block; margin-top: 2px;
+    }
+    .contact-availability {
+      padding: 18px 20px;
+      background: rgba(52,211,153,0.06);
+      border: 1px solid rgba(52,211,153,0.2);
+      border-radius: var(--radius);
+      margin-bottom: 32px;
+    }
+    .avail-title {
+      font-size: 14px; font-weight: 700;
+      color: var(--green); margin-bottom: 6px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .avail-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green);
+      animation: pulse-dot 2s infinite;
+    }
+    .avail-desc {
+      font-size: 13px; color: var(--text-secondary); line-height: 1.6;
+    }
+
+    /* ===== RIGHT SIDE — FORM ===== */
+    .contact-form-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+    }
+    .form-title {
+      font-size: 21px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 8px;
+    }
+    .form-subtitle {
+      font-size: 14px; color: var(--text-secondary);
+      margin-bottom: 30px; line-height: 1.6;
+    }
+    .form-submit-btn {
+      width: 100%;
+      padding: 15px;
+      font-size: 15px;
+      border-radius: var(--radius);
+    }
+    .form-submit-btn:disabled {
+      opacity: 0.6; cursor: not-allowed;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      .contact-form-wrap { padding: 28px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">VK<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="contact.html" class="btn btn-primary nav-hire-btn">Hire Me</a>
+        <button class="nav-toggle" aria-label="Open menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav">
+  <button class="mobile-nav-close">✕</button>
+  <ul class="mobile-nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <div class="mobile-nav-footer">
+    <a href="contact.html" class="btn btn-primary">Hire Me →</a>
+  </div>
+</div>
+
+<!-- ===================== PAGE HERO ===================== -->
+<section class="page-hero">
+  <div class="orb orb-1"></div>
+  <div class="container">
+    <div class="page-hero-label">Contact</div>
+    <h1 class="page-hero-title fade-up">
+      Let's Build Something<br/>
+      <span style="color:var(--accent)">Great Together.</span>
+    </h1>
+    <p class="page-hero-desc fade-up delay-1">
+      Have a project in mind? Fill out the form below or reach out directly.
+      I respond within 24 hours on business days — no automated replies, just me.
+    </p>
+    <div class="breadcrumb fade-up delay-2">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <span>Contact</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT SECTION ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- LEFT — Info -->
+      <div class="fade-left">
+
+        <h2 class="contact-info-title">Ready to Start a Project?</h2>
+        <p class="contact-info-desc">
+          Whether you have a detailed brief or just a rough idea —
+          I'm happy to discuss scope, feasibility, and pricing.
+          No hard sell, no pressure. Just an honest conversation.
+        </p>
+
+        <!-- Availability -->
+        <div class="contact-availability">
+          <div class="avail-title">
+            <span class="avail-dot"></span>
+            Currently Available
+          </div>
+          <p class="avail-desc">
+            Accepting new projects for Q1 2025. Book a free discovery call this week to secure your spot.
+          </p>
+        </div>
+
+        <!-- Contact Details -->
+        <div class="contact-details">
+          <a href="mailto:vishalofficial9189@gmail.com" class="cd-item">
+            <div class="cd-icon">📧</div>
+            <div>
+              <span class="cd-label">Email</span>
+              <span class="cd-value">vishalofficial9189@gmail.com</span>
+            </div>
+          </a>
+          <a href="https://wa.me/919979581737" class="cd-item" target="_blank" rel="noopener">
+            <div class="cd-icon">💬</div>
+            <div>
+              <span class="cd-label">WhatsApp</span>
+              <span class="cd-value">+91 99795 81737</span>
+            </div>
+          </a>
+          <div class="cd-item">
+            <div class="cd-icon">📍</div>
+            <div>
+              <span class="cd-label">Location</span>
+              <span class="cd-value">India · Available Worldwide</span>
+            </div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-icon">⏰</div>
+            <div>
+              <span class="cd-label">Response Time</span>
+              <span class="cd-value">Within 24 hours (Mon–Fri)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-links">
+          <a href="#" class="social-link" title="GitHub">GH</a>
+          <a href="#" class="social-link" title="LinkedIn">in</a>
+          <a href="#" class="social-link" title="Twitter">𝕏</a>
+          <a href="#" class="social-link" title="Dribbble">Dr</a>
+        </div>
+
+      </div>
+
+      <!-- RIGHT — Form -->
+      <div class="contact-form-wrap fade-right">
+        <h3 class="form-title">Send Me a Message</h3>
+        <p class="form-subtitle">Fill out the form and I'll get back to you within 24 hours.</p>
+
+        <form id="contact-form" novalidate>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">
+                Full Name <span class="required">*</span>
+              </label>
+              <input
+                type="text" id="name" name="name"
+                class="form-input"
+                placeholder="Rahul Sharma"
+                autocomplete="name"
+              />
+              <span class="form-error-msg" id="name-error"></span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">
+                Email Address <span class="required">*</span>
+              </label>
+              <input
+                type="email" id="email" name="email"
+                class="form-input"
+                placeholder="rahul@company.com"
+                autocomplete="email"
+              />
+              <span class="form-error-msg" id="email-error"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone / WhatsApp</label>
+              <input
+                type="tel" id="phone" name="phone"
+                class="form-input"
+                placeholder="+91 98XXX XXXXX"
+                autocomplete="tel"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="budget">Project Budget</label>
+              <select id="budget" name="budget" class="form-select">
+                <option value="">Select a range</option>
+                <option value="under10k">Under ₹10,000</option>
+                <option value="10k-25k">₹10,000 – ₹25,000</option>
+                <option value="25k-75k">₹25,000 – ₹75,000</option>
+                <option value="75k-2L">₹75,000 – ₹2,00,000</option>
+                <option value="2L+">₹2,00,000+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="service">Service Needed</label>
+            <select id="service" name="service" class="form-select">
+              <option value="">What can I help you with?</option>
+              <option value="webapp">Custom Web Application</option>
+              <option value="ecommerce">eCommerce Development</option>
+              <option value="website">Business Website</option>
+              <option value="api">API / Backend Development</option>
+              <option value="performance">Performance Optimization</option>
+              <option value="revamp">Website Revamp</option>
+              <option value="other">Other / Not Sure Yet</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">
+              Project Details <span class="required">*</span>
+            </label>
+            <textarea
+              id="message" name="message"
+              class="form-textarea"
+              placeholder="Tell me about your project — what you want to build, your timeline, any specific requirements, and the problem you're trying to solve..."
+            ></textarea>
+            <span class="form-error-msg" id="message-error"></span>
+          </div>
+
+          <button
+            type="submit"
+            id="form-submit-btn"
+            class="btn btn-primary form-submit-btn"
+          >
+            Send Message →
+          </button>
+
+          <div class="form-success-box" id="form-success-box">
+            ✅ Message sent successfully! I'll reply within 24 hours.
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo">VK<span>.</span></a>
+        <p class="footer-tagline">Full-Stack Web Developer building fast, scalable, and conversion-focused digital products for businesses worldwide.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" title="GitHub">GH</a>
+          <a href="#" class="social-link" title="LinkedIn">in</a>
+          <a href="#" class="social-link" title="Twitter">𝕏</a>
+          <a href="#" class="social-link" title="Dribbble">Dr</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="services.html">Web Applications</a></li>
+          <li><a href="services.html">eCommerce</a></li>
+          <li><a href="services.html">Business Websites</a></li>
+          <li><a href="services.html">API Development</a></li>
+          <li><a href="services.html">Performance Audit</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Get In Touch</div>
+        <ul class="footer-links">
+          <li><a href="mailto:vishalofficial9189@gmail.com">vishalofficial9189@gmail.com</a></li>
+          <li><a href="tel:+919979581737">+91 99795 81737</a></li>
+          <li><a href="#">Download Resume</a></li>
+          <li><a href="contact.html">Schedule a Call</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 <span>Vishal Kumar</span>. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/919979581737" class="whatsapp-float" target="_blank" rel="noopener">💬</a>
+
+<!-- Scroll to Top -->
+<button class="scroll-top" aria-label="Scroll to top">↑</button>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('zN20uxb5foHYszb_9');</script>
+
+<!-- Scripts -->
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/form.js"></script>
+</body>
+</html>

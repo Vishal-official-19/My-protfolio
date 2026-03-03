@@ -1,0 +1,12 @@
+{
+  "name": "vishal-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["portfolio"],
+  "author": "Vishal",
+  "license": "MIT"
+}

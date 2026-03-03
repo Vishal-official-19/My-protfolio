@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vishal Kumar — Full-Stack Web Developer | Freelance</title>
+  <meta name="description" content="Vishal Kumar is a freelance full-stack web developer who builds fast, conversion-focused websites and web apps. Available for new projects." />
+  <meta name="keywords" content="freelance web developer, full-stack developer, React, Node.js, Vishal Kumar, hire web developer India" />
+  <meta name="author" content="Vishal Kumar" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Vishal Kumar — Full-Stack Web Developer" />
+  <meta property="og:description" content="I build fast, scalable web products that help businesses grow online." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vishalkumar.dev" />
+  <meta property="og:image" content="assets/images/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://vishalkumar.dev" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+
+  <style>
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 130px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-headline {
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 900;
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+      margin-bottom: 26px;
+    }
+    .hero-headline .accent { color: var(--accent); }
+    .hero-desc {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.78;
+      max-width: 500px;
+      margin-bottom: 38px;
+    }
+    .hero-desc strong { color: var(--text-primary); font-weight: 600; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
+    .hero-stats {
+      display: flex;
+      gap: 44px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .hero-img-card { position: relative; }
+    .hero-img-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-accent), var(--shadow-lg);
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      height: 490px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(15%) contrast(1.04);
+    }
+    .hero-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(8,12,24,0.75) 100%);
+    }
+    .hero-img-badge {
+      position: absolute;
+      bottom: 22px; left: 20px; right: 20px;
+      background: rgba(13,18,32,0.92);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .badge-name  { font-size: 15px; font-weight: 700; color: var(--text-primary); display: block; }
+    .badge-role  { font-size: 11px; color: var(--text-secondary); font-family: var(--mono); display: block; margin-top: 2px; min-height: 16px; }
+    .badge-stars { color: var(--yellow); font-size: 13px; display: block; letter-spacing: 2px; }
+    .badge-info  { font-size: 11px; color: var(--text-muted); display: block; margin-top: 2px; }
+    .hero-float-pill {
+      position: absolute;
+      top: -14px; right: -14px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px; font-weight: 700;
+      font-family: var(--mono);
+      padding: 8px 16px;
+      border-radius: 30px;
+      box-shadow: 0 4px 20px rgba(79,142,247,0.45);
+      white-space: nowrap;
+    }
+
+    /* ===== TRUST BAR ===== */
+    #trust-bar {
+      padding: 28px 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .trust-inner { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .trust-label {
+      font-family: var(--mono); font-size: 11px; font-weight: 600;
+      color: var(--text-muted); text-transform: uppercase;
+      letter-spacing: 2px; white-space: nowrap;
+    }
+    .trust-sep { width: 1px; height: 20px; background: var(--border-subtle); }
+    .trust-logos { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+    .trust-logo {
+      font-size: 14px; font-weight: 700; color: var(--text-muted);
+      transition: var(--transition); cursor: default; letter-spacing: -0.01em;
+    }
+    .trust-logo:hover { color: var(--text-secondary); }
+
+    /* ===== ABOUT ===== */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-img-stack { position: relative; }
+    .about-img-main { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); }
+    .about-img-main img { width: 100%; height: 460px; object-fit: cover; display: block; filter: grayscale(10%); }
+    .about-float-card {
+      position: absolute;
+      bottom: -22px; right: -22px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      min-width: 190px;
+      box-shadow: var(--shadow);
+    }
+    .about-float-num { font-size: 38px; font-weight: 900; color: var(--accent); line-height: 1; letter-spacing: -0.03em; }
+    .about-float-lbl { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+    .about-body p { font-size: 16px; color: var(--text-secondary); line-height: 1.82; margin-bottom: 18px; }
+    .about-body p strong { color: var(--text-primary); font-weight: 600; }
+    .about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 30px 0; }
+    .hl-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 16px; background: var(--bg-card);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius);
+      transition: var(--transition);
+    }
+    .hl-item:hover { border-color: var(--border); background: var(--bg-card-hover); }
+    .hl-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--accent-dim); display: flex;
+      align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;
+    }
+    .hl-text { font-size: 13px; font-weight: 600; color: var(--text-primary); line-height: 1.4; }
+    .hl-sub  { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    /* ===== SKILLS ===== */
+    .skills-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .skill-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg); padding: 28px; transition: var(--transition);
+    }
+    .skill-card:hover { border-color: var(--border); transform: translateY(-4px); box-shadow: var(--shadow-accent); }
+    .skill-card-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--accent-dim); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 18px;
+    }
+    .skill-card-title { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 5px; }
+    .skill-card-desc  { font-size: 12px; color: var(--text-muted); margin-bottom: 18px; line-height: 1.5; }
+    .skill-card:hover .skill-tag { border-color: var(--border); color: var(--text-primary); }
+
+    /* ===== SERVICES PREVIEW ===== */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .svc-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg); padding: 34px 28px;
+      transition: var(--transition); position: relative; overflow: hidden;
+    }
+    .svc-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0; transition: var(--transition);
+    }
+    .svc-card:hover { border-color: var(--border); transform: translateY(-6px); box-shadow: var(--shadow-accent), var(--shadow); background: var(--bg-card-hover); }
+    .svc-card:hover::before { opacity: 1; }
+    .svc-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--accent-dim); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 22px;
+    }
+    .svc-title { font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; letter-spacing: -0.01em; }
+    .svc-desc  { font-size: 14px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 22px; }
+    .svc-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .svc-features li { font-size: 13px; color: var(--text-secondary); display: flex; align-items: center; gap: 8px; }
+    .svc-features li::before { content: '→'; color: var(--accent); font-size: 12px; flex-shrink: 0; }
+    .svc-price { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; }
+    .svc-price-lbl { font-family: var(--mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+    .svc-price-val { font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--accent); }
+
+    /* ===== PROJECTS PREVIEW ===== */
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .proj-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg); overflow: hidden; transition: var(--transition);
+    }
+    .proj-card:hover { border-color: var(--border); transform: translateY(-6px); box-shadow: var(--shadow-accent), var(--shadow); }
+    .proj-img-wrap { overflow: hidden; position: relative; }
+    .proj-img { width: 100%; height: 196px; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    .proj-card:hover .proj-img { transform: scale(1.04); }
+    .proj-badge { position: absolute; top: 14px; left: 14px; }
+    .proj-body { padding: 22px; }
+    .proj-title { font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; letter-spacing: -0.01em; }
+    .proj-desc  { font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px; }
+    .proj-results {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+      margin-bottom: 18px; padding: 14px;
+      background: rgba(79,142,247,0.04);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius);
+    }
+    .pr-item { display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; }
+    .pr-num   { font-family: var(--mono); font-size: 17px; font-weight: 800; color: var(--accent); }
+    .pr-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .proj-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .proj-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; transition: var(--transition); }
+    .proj-link:hover { gap: 10px; }
+
+    /* ===== TESTIMONIALS ===== */
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+
+    /* ===== PROCESS ===== */
+    .process-wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+    .process-wrap::before {
+      content: ''; position: absolute;
+      top: 27px; left: calc(12.5% + 20px); right: calc(12.5% + 20px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), rgba(79,142,247,0.2), var(--accent), rgba(79,142,247,0.2));
+    }
+    .proc-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 14px; }
+    .proc-num {
+      width: 54px; height: 54px; border-radius: 50%;
+      background: var(--bg-card); border: 2px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 15px; font-weight: 800; color: var(--accent);
+      margin-bottom: 18px; position: relative; z-index: 1;
+      box-shadow: 0 0 20px rgba(79,142,247,0.18);
+    }
+    .proc-title { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+    .proc-desc  { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ===== TRUST SIGNALS ===== */
+    .trust-signals {
+      display: flex; justify-content: center; gap: 56px; flex-wrap: wrap;
+      padding: 44px 0; border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .ts-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .ts-num   { font-family: var(--mono); font-size: 30px; font-weight: 900; color: var(--text-primary); letter-spacing: -0.03em; }
+    .ts-label { font-family: var(--mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.2px; }
+    .ts-sep   { width: 1px; background: var(--border-subtle); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-img-card { max-width: 420px; margin: 0 auto; }
+      .about-grid { grid-template-columns: 1fr; gap: 56px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .testi-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-wrap { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .process-wrap::before { display: none; }
+      .skills-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+    @media (max-width: 768px) {
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .process-wrap { grid-template-columns: 1fr; }
+      .about-highlights { grid-template-columns: 1fr; }
+      .about-float-card { right: 0; bottom: -18px; }
+      .trust-signals { gap: 32px; }
+    }
+    @media (max-width: 480px) {
+      .hero-headline { font-size: 38px; }
+      .hero-stats { flex-direction: column; gap: 16px; }
+      .hero-float-pill { top: -10px; right: -10px; font-size: 11px; padding: 6px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">VK<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="contact.html" class="btn btn-primary nav-hire-btn">Hire Me</a>
+        <button class="nav-toggle" aria-label="Open menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav">
+  <button class="mobile-nav-close" aria-label="Close menu">✕</button>
+  <ul class="mobile-nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mobile-nav-footer">
+    <a href="contact.html" class="btn btn-primary">Hire Me →</a>
+  </div>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<section id="hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- Left -->
+      <div>
+        <div class="available-badge mb-24 fade-up">
+          <span class="available-dot"></span>
+          Available for new projects
+        </div>
+
+        <h1 class="hero-headline fade-up delay-1">
+          I Build Web Products<br/>
+          That Actually<br/>
+          <span class="accent">Drive Results.</span>
+        </h1>
+
+        <p class="hero-desc fade-up delay-2">
+          Hi, I'm <strong>Vishal Kumar</strong> — a freelance
+          <strong>Full-Stack Web Developer</strong> specializing in
+          building fast, scalable, and conversion-optimized web
+          applications for startups, SMEs, and growing businesses.
+        </p>
+
+        <div class="hero-actions fade-up delay-3">
+          <a href="projects.html" class="btn btn-primary btn-lg">View My Work →</a>
+          <a href="contact.html" class="btn btn-outline btn-lg">Let's Talk</a>
+        </div>
+
+        <div class="hero-stats fade-up delay-4">
+          <div class="stat-item">
+            <span class="stat-num"><span class="counter" data-target="4">0</span><span>+</span></span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num"><span class="counter" data-target="48">0</span><span>+</span></span>
+            <span class="stat-label">Projects Delivered</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num"><span class="counter" data-target="100">0</span><span>%</span></span>
+            <span class="stat-label">Client Satisfaction</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right — Image -->
+      <div class="hero-img-card fade-right delay-2">
+        <div class="hero-float-pill">⚡ Open to Work</div>
+        <div class="hero-img-wrap">
+          <img
+            src="assets/images/profile.jpg"
+            alt="Vishal Kumar — Full-Stack Web Developer"
+            loading="eager"
+            width="420" height="490"
+          />
+          <div class="hero-img-overlay"></div>
+          <div class="hero-img-badge">
+            <div>
+              <span class="badge-name">Vishal Kumar</span>
+              <span class="badge-role" id="hero-typewriter">Full-Stack Developer</span>
+            </div>
+            <div style="text-align:right">
+              <span class="badge-stars">★★★★★</span>
+              <span class="badge-info">48 projects · 4+ yrs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRUST BAR ===================== -->
+<section id="trust-bar">
+  <div class="container">
+    <div class="trust-inner">
+      <span class="trust-label">My Stack</span>
+      <div class="trust-sep"></div>
+      <div class="trust-logos">
+        <span class="trust-logo">React</span>
+        <span class="trust-logo">Next.js</span>
+        <span class="trust-logo">Node.js</span>
+        <span class="trust-logo">TypeScript</span>
+        <span class="trust-logo">PostgreSQL</span>
+        <span class="trust-logo">MongoDB</span>
+        <span class="trust-logo">AWS</span>
+        <span class="trust-logo">Tailwind CSS</span>
+        <span class="trust-logo">Docker</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- Image -->
+      <div class="about-img-stack fade-left">
+        <div class="about-img-main">
+          <img
+            src="assets/images/profile.jpg"
+            alt="Vishal Kumar working"
+            loading="lazy" width="520" height="460"
+          />
+        </div>
+        <div class="about-float-card">
+          <div class="about-float-num">48+</div>
+          <div class="about-float-lbl">Projects Delivered</div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="about-body fade-right">
+        <span class="section-label">About Me</span>
+        <h2 class="section-title">Building More Than<br/>Websites. Building<br/><span class="text-accent">Business Assets.</span></h2>
+
+        <p style="margin-top:22px">
+          I'm a <strong>full-stack web developer with 4+ years of experience</strong>
+          turning complex business requirements into clean, performant digital products.
+        </p>
+        <p>
+          My work sits at the intersection of engineering and business strategy —
+          I don't just write code, I build solutions that <strong>reduce friction,
+          increase conversions, and scale with your growth.</strong>
+        </p>
+        <p>
+          I've worked with early-stage startups, established SMEs, and product agencies
+          across India and internationally — helping them launch faster and compete smarter.
+        </p>
+
+        <div class="about-highlights">
+          <div class="hl-item">
+            <div class="hl-icon">🚀</div>
+            <div><div class="hl-text">Fast Delivery</div><div class="hl-sub">On-time, every time</div></div>
+          </div>
+          <div class="hl-item">
+            <div class="hl-icon">📱</div>
+            <div><div class="hl-text">Mobile-First</div><div class="hl-sub">Responsive by default</div></div>
+          </div>
+          <div class="hl-item">
+            <div class="hl-icon">⚡</div>
+            <div><div class="hl-text">Performance</div><div class="hl-sub">90+ Lighthouse scores</div></div>
+          </div>
+          <div class="hl-item">
+            <div class="hl-icon">🔒</div>
+            <div><div class="hl-text">Clean Code</div><div class="hl-sub">Documented &amp; scalable</div></div>
+          </div>
+        </div>
+
+        <div class="flex-center" style="justify-content:flex-start; gap:14px; flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary">Work With Me →</a>
+          <a href="projects.html" class="btn btn-outline">See My Work</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SKILLS ===================== -->
+<section id="skills" class="section section-alt">
+  <div class="container">
+    <div class="skills-header">
+      <div>
+        <span class="section-label">Technical Skills</span>
+        <h2 class="section-title">Full-Stack Toolkit Built<br/>for Real-World Projects</h2>
+      </div>
+      <p class="section-subtitle" style="max-width:260px; text-align:right;">
+        From DB design to pixel-perfect UI — I own the full stack.
+      </p>
+    </div>
+
+    <div class="skills-grid">
+
+      <div class="skill-card fade-up">
+        <div class="skill-card-icon">⚛️</div>
+        <div class="skill-card-title">Frontend Development</div>
+        <div class="skill-card-desc">Modern, fast, accessible UIs that users love.</div>
+        <div class="progress-wrap">
+          <span class="progress-label">Proficiency</span>
+          <div class="progress-bar"><div class="progress-fill" data-width="92%"></div></div>
+          <span class="progress-pct">92%</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">React.js</span><span class="skill-tag">Next.js</span>
+          <span class="skill-tag">TypeScript</span><span class="skill-tag">Tailwind CSS</span>
+          <span class="skill-tag">Redux</span><span class="skill-tag">HTML5/CSS3</span>
+        </div>
+      </div>
+
+      <div class="skill-card fade-up delay-1">
+        <div class="skill-card-icon">🖥️</div>
+        <div class="skill-card-title">Backend Development</div>
+        <div class="skill-card-desc">Scalable APIs and server-side logic.</div>
+        <div class="progress-wrap">
+          <span class="progress-label">Proficiency</span>
+          <div class="progress-bar"><div class="progress-fill" data-width="88%"></div></div>
+          <span class="progress-pct">88%</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Node.js</span><span class="skill-tag">Express.js</span>
+          <span class="skill-tag">REST APIs</span><span class="skill-tag">GraphQL</span>
+          <span class="skill-tag">JWT Auth</span><span class="skill-tag">Socket.io</span>
+        </div>
+      </div>
+
+      <div class="skill-card fade-up delay-2">
+        <div class="skill-card-icon">🗄️</div>
+        <div class="skill-card-title">Database &amp; Storage</div>
+        <div class="skill-card-desc">Efficient data modeling for speed and reliability.</div>
+        <div class="progress-wrap">
+          <span class="progress-label">Proficiency</span>
+          <div class="progress-bar"><div class="progress-fill" data-width="85%"></div></div>
+          <span class="progress-pct">85%</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">PostgreSQL</span><span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">MySQL</span><span class="skill-tag">Redis</span>
+          <span class="skill-tag">Prisma ORM</span><span class="skill-tag">Supabase</span>
+        </div>
+      </div>
+
+      <div class="skill-card fade-up">
+        <div class="skill-card-icon">☁️</div>
+        <div class="skill-card-title">Cloud &amp; DevOps</div>
+        <div class="skill-card-desc">Deploy fast. Scale without limits.</div>
+        <div class="progress-wrap">
+          <span class="progress-label">Proficiency</span>
+          <div class="progress-bar"><div class="progress-fill" data-width="80%"></div></div>
+          <span class="progress-pct">80%</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">AWS</span><span class="skill-tag">Vercel</span>
+          <span class="skill-tag">Docker</span><span class="skill-tag">CI/CD</span>
+          <span class="skill-tag">Nginx</span><span class="skill-tag">GitHub Actions</span>
+        </div>
+      </div>
+
+      <div class="skill-card fade-up delay-1">
+        <div class="skill-card-icon">📱</div>
+        <div class="skill-card-title">Mobile &amp; PWA</div>
+        <div class="skill-card-desc">App-like experiences on any device.</div>
+        <div class="progress-wrap">
+          <span class="progress-label">Proficiency</span>
+          <div class="progress-bar"><div class="progress-fill" data-width="75%"></div></div>
+          <span class="progress-pct">75%</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">React Native</span><span class="skill-tag">PWA</span>
+          <span class="skill-tag">Expo</span><span class="skill-tag">Offline-first</span>
+        </div>
+      </div>
+
+      <div class="skill-card fade-up delay-2">
+        <div class="skill-card-icon">🎯</div>
+        <div class="skill-card-title">Tools &amp; Workflow</div>
+        <div class="skill-card-desc">Professional workflow for collaboration.</div>
+        <div class="progress-wrap">
+          <span class="progress-label">Proficiency</span>
+          <div class="progress-bar"><div class="progress-fill" data-width="90%"></div></div>
+          <span class="progress-pct">90%</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Git/GitHub</span><span class="skill-tag">Figma</span>
+          <span class="skill-tag">Jira</span><span class="skill-tag">Postman</span>
+          <span class="skill-tag">VS Code</span><span class="skill-tag">Agile/Scrum</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICES PREVIEW ===================== -->
+<section id="services-preview" class="section">
+  <div class="container">
+    <div class="flex-between mb-48">
+      <div>
+        <span class="section-label">Services</span>
+        <h2 class="section-title">What I Can Build<br/>for You</h2>
+      </div>
+      <a href="services.html" class="btn btn-outline">View All Services →</a>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="svc-card fade-up">
+        <div class="svc-icon">🌐</div>
+        <h3 class="svc-title">Custom Web Applications</h3>
+        <p class="svc-desc">Full-stack web apps with React/Next.js + Node.js. MVPs to complex SaaS — built to scale.</p>
+        <ul class="svc-features">
+          <li>SaaS platforms &amp; dashboards</li>
+          <li>Admin panels &amp; CMS</li>
+          <li>Real-time features</li>
+          <li>Third-party integrations</li>
+        </ul>
+        <div class="svc-price">
+          <span class="svc-price-lbl">Starting at</span>
+          <span class="svc-price-val">₹25,000+</span>
+        </div>
+      </div>
+
+      <div class="svc-card fade-up delay-1">
+        <div class="svc-icon">🛒</div>
+        <h3 class="svc-title">eCommerce Development</h3>
+        <p class="svc-desc">High-converting online stores built for performance, SEO, and growth from day one.</p>
+        <ul class="svc-features">
+          <li>Custom eCommerce builds</li>
+          <li>Payment gateway integration</li>
+          <li>Inventory management</li>
+          <li>Mobile-optimized checkout</li>
+        </ul>
+        <div class="svc-price">
+          <span class="svc-price-lbl">Starting at</span>
+          <span class="svc-price-val">₹20,000+</span>
+        </div>
+      </div>
+
+      <div class="svc-card fade-up delay-2">
+        <div class="svc-icon">🏢</div>
+        <h3 class="svc-title">Business Websites</h3>
+        <p class="svc-desc">Professional websites that position your brand with authority and convert visitors into leads.</p>
+        <ul class="svc-features">
+          <li>Corporate &amp; landing pages</li>
+          <li>On-page SEO optimization</li>
+          <li>CRM integration</li>
+          <li>Analytics &amp; tracking</li>
+        </ul>
+        <div class="svc-price">
+          <span class="svc-price-lbl">Starting at</span>
+          <span class="svc-price-val">₹12,000+</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROCESS ===================== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="text-center mb-60">
+      <span class="section-label" style="justify-content:center;">How I Work</span>
+      <h2 class="section-title">My Proven 4-Step Process</h2>
+      <p class="section-subtitle" style="margin:14px auto 0; text-align:center;">
+        Structured, transparent, and result-driven from first call to launch day.
+      </p>
+    </div>
+    <div class="process-wrap">
+      <div class="proc-step fade-up">
+        <div class="proc-num">01</div>
+        <div class="proc-title">Discovery Call</div>
+        <p class="proc-desc">We align on goals, timeline, budget, and scope before any commitment.</p>
+      </div>
+      <div class="proc-step fade-up delay-1">
+        <div class="proc-num">02</div>
+        <div class="proc-title">Planning &amp; Design</div>
+        <p class="proc-desc">Wireframes, architecture blueprint, and a roadmap you can approve.</p>
+      </div>
+      <div class="proc-step fade-up delay-2">
+        <div class="proc-num">03</div>
+        <div class="proc-title">Development</div>
+        <p class="proc-desc">Iterative builds with regular demos. You stay in the loop always.</p>
+      </div>
+      <div class="proc-step fade-up delay-3">
+        <div class="proc-num">04</div>
+        <div class="proc-title">Launch &amp; Support</div>
+        <p class="proc-desc">Thorough QA, smooth deployment, 30-day post-launch support included.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROJECTS PREVIEW ===================== -->
+<section id="projects-preview" class="section">
+  <div class="container">
+    <div class="flex-between mb-48">
+      <div>
+        <span class="section-label">Portfolio</span>
+        <h2 class="section-title">Recent Work &amp;<br/>Case Studies</h2>
+      </div>
+      <a href="projects.html" class="btn btn-outline">View All Projects →</a>
+    </div>
+
+    <div class="projects-grid">
+
+      <div class="proj-card fade-up">
+        <div class="proj-img-wrap">
+          <img class="proj-img" src="https://placehold.co/600x196/111827/4F8EF7?text=SaaS+Dashboard" alt="SaaS Dashboard" loading="lazy"/>
+          <div class="proj-badge"><span class="tag">Web App</span></div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">SaaS Analytics Dashboard</h3>
+          <p class="proj-desc">Real-time B2B analytics platform tracking user behavior, revenue metrics and funnel performance for 5,000+ users.</p>
+          <div class="proj-results">
+            <div class="pr-item"><span class="pr-num">3x</span><span class="pr-label">Faster Load</span></div>
+            <div class="pr-item"><span class="pr-num">40%</span><span class="pr-label">Retention↑</span></div>
+            <div class="pr-item"><span class="pr-num">98</span><span class="pr-label">Lighthouse</span></div>
+          </div>
+          <div class="proj-stack">
+            <span class="skill-tag">Next.js</span><span class="skill-tag">Node.js</span>
+            <span class="skill-tag">PostgreSQL</span><span class="skill-tag">Redis</span>
+          </div>
+          <a href="projects.html" class="proj-link">View Case Study →</a>
+        </div>
+      </div>
+
+      <div class="proj-card fade-up delay-1">
+        <div class="proj-img-wrap">
+          <img class="proj-img" src="https://placehold.co/600x196/111827/34D399?text=eCommerce+Marketplace" alt="Marketplace" loading="lazy"/>
+          <div class="proj-badge"><span class="tag">eCommerce</span></div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">Multi-Vendor Marketplace</h3>
+          <p class="proj-desc">Fashion marketplace with 150+ vendors, live inventory, Razorpay payments, and automated vendor payouts.</p>
+          <div class="proj-results">
+            <div class="pr-item"><span class="pr-num">₹12L</span><span class="pr-label">Month 1 GMV</span></div>
+            <div class="pr-item"><span class="pr-num">150+</span><span class="pr-label">Vendors</span></div>
+            <div class="pr-item"><span class="pr-num">2.1s</span><span class="pr-label">Load Time</span></div>
+          </div>
+          <div class="proj-stack">
+            <span class="skill-tag">React</span><span class="skill-tag">Express.js</span>
+            <span class="skill-tag">MongoDB</span><span class="skill-tag">Razorpay</span>
+          </div>
+          <a href="projects.html" class="proj-link">View Case Study →</a>
+        </div>
+      </div>
+
+      <div class="proj-card fade-up delay-2">
+        <div class="proj-img-wrap">
+          <img class="proj-img" src="https://placehold.co/600x196/111827/FBBF24?text=EdTech+Platform" alt="EdTech" loading="lazy"/>
+          <div class="proj-badge"><span class="tag">Web App</span></div>
+        </div>
+        <div class="proj-body">
+          <h3 class="proj-title">EdTech Learning Platform</h3>
+          <p class="proj-desc">Full LMS with live classes via WebRTC, quiz engine, progress tracking, and certificate generation for 8K+ students.</p>
+          <div class="proj-results">
+            <div class="pr-item"><span class="pr-num">8K+</span><span class="pr-label">Students</span></div>
+            <div class="pr-item"><span class="pr-num">200+</span><span class="pr-label">Courses</span></div>
+            <div class="pr-item"><span class="pr-num">99.9%</span><span class="pr-label">Uptime</span></div>
+          </div>
+          <div class="proj-stack">
+            <span class="skill-tag">Next.js</span><span class="skill-tag">Node.js</span>
+            <span class="skill-tag">WebRTC</span><span class="skill-tag">Socket.io</span>
+          </div>
+          <a href="projects.html" class="proj-link">View Case Study →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section id="testimonials" class="section section-alt">
+  <div class="container">
+    <div class="text-center mb-60">
+      <span class="section-label" style="justify-content:center;">Client Reviews</span>
+      <h2 class="section-title">What Clients Say</h2>
+      <p class="section-subtitle" style="margin:14px auto 0; text-align:center;">
+        Real feedback from real clients. No fluff.
+      </p>
+    </div>
+
+    <div class="testi-grid">
+
+      <div class="testi-card fade-up">
+        <div class="testi-quote-icon">"</div>
+        <p class="testi-text">Vishal delivered our SaaS dashboard in exactly 6 weeks — on time and under budget. The code quality was clean and well-documented. We're already planning Phase 2 with him.</p>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-author">
+          <div class="testi-avatar">RG</div>
+          <div>
+            <div class="testi-name">Rahul Gupta</div>
+            <div class="testi-company">CEO · DataPilot Technologies, Bangalore</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-up delay-1">
+        <div class="testi-quote-icon">"</div>
+        <p class="testi-text">Our store went from zero to ₹12 lakhs GMV in the first month. Vishal suggested UX improvements that directly improved our checkout conversion by 28%. Exceptional work.</p>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#34D399;">PM</div>
+          <div>
+            <div class="testi-name">Priya Mehta</div>
+            <div class="testi-company">Founder · StyleNest India, Mumbai</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-up delay-2">
+        <div class="testi-quote-icon">"</div>
+        <p class="testi-text">Vishal stands out because he communicates proactively, asks the right questions, and doesn't disappear when things get complex. The EdTech platform now has 8,000+ active learners.</p>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#FBBF24; color:#1a1a1a;">AS</div>
+          <div>
+            <div class="testi-name">Amit Sharma</div>
+            <div class="testi-company">CTO · SkillBridge Academy, Pune</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Trust Signals -->
+    <div class="trust-signals mt-60">
+      <div class="ts-item">
+        <span class="ts-num">100%</span>
+        <span class="ts-label">Job Success</span>
+      </div>
+      <div class="ts-sep"></div>
+      <div class="ts-item">
+        <span class="ts-num">5.0 ★</span>
+        <span class="ts-label">Avg Rating</span>
+      </div>
+      <div class="ts-sep"></div>
+      <div class="ts-item">
+        <span class="ts-num">48+</span>
+        <span class="ts-label">Projects Done</span>
+      </div>
+      <div class="ts-sep"></div>
+      <div class="ts-item">
+        <span class="ts-num">30</span>
+        <span class="ts-label">Days Support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="cta-section">
+  <div class="container">
+    <div class="fade-up">
+      <p class="mono text-accent" style="font-size:12px; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px;">Ready to start?</p>
+      <h2 class="cta-title">Got a Project in Mind?<br/>Let's Build It Together.</h2>
+      <p class="cta-desc">From idea to deployment — I'll handle the full stack so you can focus on your business.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn btn-primary btn-lg">Start a Project →</a>
+        <a href="projects.html" class="btn btn-outline btn-lg">See My Work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo">VK<span>.</span></a>
+        <p class="footer-tagline">Full-Stack Web Developer building fast, scalable, and conversion-focused digital products for businesses worldwide.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" title="GitHub">GH</a>
+          <a href="#" class="social-link" title="LinkedIn">in</a>
+          <a href="#" class="social-link" title="Twitter">𝕏</a>
+          <a href="#" class="social-link" title="Dribbble">Dr</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="services.html">Web Applications</a></li>
+          <li><a href="services.html">eCommerce</a></li>
+          <li><a href="services.html">Business Websites</a></li>
+          <li><a href="services.html">API Development</a></li>
+          <li><a href="services.html">Performance Audit</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Get In Touch</div>
+        <ul class="footer-links">
+          <li><a href="mailto:vishalofficial9189@gmail.com">vishalofficial9189@gmail.com</a></li>
+          <li><a href="tel:+919979581737">+91 99795 81737</a></li>
+          <li><a href="#">Download Resume</a></li>
+          <li><a href="contact.html">Schedule a Call</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 <span>Vishal Kumar</span>. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/919979581737" class="whatsapp-float" target="_blank" rel="noopener" title="Chat on WhatsApp">💬</a>
+
+<!-- Scroll to Top -->
+<button class="scroll-top" aria-label="Scroll to top">↑</button>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('YOUR_PUBLIC_KEY');</script>
+
+<!-- Scripts -->
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
