@@ -4,235 +4,112 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects — Vishal Kumar | Full-Stack Web Developer</title>
-  <meta name="description" content="Explore Vishal Kumar's portfolio of real-world web development projects — SaaS apps, eCommerce platforms, EdTech solutions and more." />
-  <meta name="author" content="Vishal Kumar" />
+  <meta name="description" content="Real-world web development projects by Vishal Kumar — SaaS apps, eCommerce, EdTech, and more with measurable results." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Projects — Vishal Kumar" />
-  <meta property="og:description" content="Real projects, real results. Case studies with measurable outcomes." />
-  <meta property="og:type" content="website" />
-  <link rel="canonical" href="https://vishalkumar.dev/projects.html" />
+  <link rel="canonical" href="https://vishal-official-19.github.io/My-protfolio/projects.html" />
 
-  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="assets/css/navbar.css" />
   <link rel="stylesheet" href="assets/css/animations.css" />
 
   <style>
-    /* ===== FILTER BAR ===== */
-    .filter-bar {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 48px;
-    }
+    /* ===== FILTER ===== */
+    .filter-bar { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:48px; }
     .filter-btn {
-      padding: 9px 20px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      font-family: var(--font);
-      cursor: pointer;
-      border: 1px solid var(--border-subtle);
-      background: transparent;
-      color: var(--text-muted);
-      transition: var(--transition);
+      padding:9px 20px; border-radius:10px; font-size:13px; font-weight:600;
+      font-family:var(--font); cursor:pointer; border:1px solid var(--border-subtle);
+      background:transparent; color:var(--text-muted); transition:var(--transition);
     }
-    .filter-btn:hover,
+    .filter-btn:hover { background:var(--accent-dim); border-color:var(--border); color:var(--accent); }
     .filter-btn.active {
-      background: var(--accent-dim);
-      border-color: var(--border);
-      color: var(--accent);
+      background: var(--grad-primary);
+      border-color: transparent; color: #fff;
+      box-shadow: 0 4px 16px rgba(108,99,255,0.35);
     }
 
-    /* ===== PROJECTS GRID ===== */
-    .all-projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
+    /* ===== ALL PROJECTS GRID ===== */
+    .all-projects-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
 
     /* ===== PROJECT CARD ===== */
     .proj-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
+      background:var(--bg-card); border:1px solid var(--border-subtle);
+      border-radius:var(--radius-lg); overflow:hidden;
+      transition:var(--transition); display:flex; flex-direction:column;
+      position:relative;
     }
-    .proj-card:hover {
-      border-color: var(--border);
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-accent), var(--shadow);
+    .proj-card::before {
+      content:''; position:absolute; top:0; left:0; right:0;
+      height:2px; background:var(--grad-primary); opacity:0; transition:var(--transition);
     }
-    .proj-img-wrap { overflow: hidden; position: relative; flex-shrink: 0; }
-    .proj-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.45s ease;
-    }
-    .proj-card:hover .proj-img { transform: scale(1.05); }
-    .proj-badge-wrap {
-      position: absolute;
-      top: 14px; left: 14px;
-      display: flex; gap: 6px;
-    }
-    .proj-body {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-    .proj-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-    }
-    .proj-desc {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.72;
-      margin-bottom: 20px;
-      flex: 1;
-    }
+    .proj-card:hover { border-color:var(--border); transform:translateY(-7px); box-shadow:var(--shadow-glow),var(--shadow); }
+    .proj-card:hover::before { opacity:1; }
+    .proj-img-wrap { overflow:hidden; position:relative; flex-shrink:0; }
+    .proj-img { width:100%; height:200px; object-fit:cover; display:block; transition:transform 0.5s ease; }
+    .proj-card:hover .proj-img { transform:scale(1.06); }
+    .proj-badge-wrap { position:absolute; top:14px; left:14px; display:flex; gap:6px; }
+    .proj-body { padding:24px; display:flex; flex-direction:column; flex:1; }
+    .proj-title { font-size:18px; font-weight:700; color:var(--text-primary); margin-bottom:8px; letter-spacing:-0.01em; }
+    .proj-desc  { font-size:13px; color:var(--text-secondary); line-height:1.72; margin-bottom:18px; flex:1; }
     .proj-results {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 18px;
-      padding: 14px;
-      background: rgba(79,142,247,0.04);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius);
+      display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:16px;
+      padding:13px; background:rgba(108,99,255,0.05); border:1px solid var(--border-subtle); border-radius:var(--radius);
     }
-    .pr-item { display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; }
-    .pr-num   { font-family: var(--mono); font-size: 17px; font-weight: 800; color: var(--accent); }
-    .pr-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
-    .proj-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
-    .proj-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 16px;
-      border-top: 1px solid var(--border-subtle);
-    }
-    .proj-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--accent);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-    .proj-link:hover { gap: 10px; }
-    .proj-year {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--text-muted);
-    }
+    .pr-item  { display:flex; flex-direction:column; align-items:center; gap:2px; text-align:center; }
+    .pr-num   { font-family:var(--mono); font-size:16px; font-weight:800; background:var(--grad-primary); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .pr-label { font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; }
+    .proj-stack { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px; }
+    .proj-footer { display:flex; align-items:center; justify-content:space-between; padding-top:16px; border-top:1px solid var(--border-subtle); }
+    .proj-link { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:700; background:var(--grad-primary); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; text-decoration:none; transition:var(--transition); }
+    .proj-link:hover { gap:10px; }
+    .proj-year { font-family:var(--mono); font-size:11px; color:var(--text-muted); }
 
-    /* ===== FEATURED PROJECT (BIG CARD) ===== */
+    /* ===== FEATURED ===== */
     .featured-project {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin-bottom: 48px;
-      transition: var(--transition);
+      display:grid; grid-template-columns:1fr 1fr; gap:0;
+      background:var(--bg-card); border:1px solid var(--border-subtle);
+      border-radius:var(--radius-lg); overflow:hidden; margin-bottom:52px;
+      transition:var(--transition); position:relative;
     }
-    .featured-project:hover {
-      border-color: var(--border);
-      box-shadow: var(--shadow-accent), var(--shadow);
-    }
-    .featured-img {
-      width: 100%;
-      height: 100%;
-      min-height: 340px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.45s ease;
-    }
-    .featured-project:hover .featured-img { transform: scale(1.03); }
-    .featured-img-wrap { overflow: hidden; position: relative; }
-    .featured-img-badge {
-      position: absolute;
-      top: 18px; left: 18px;
-      display: flex; gap: 8px;
-    }
-    .featured-body {
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+    .featured-project::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--grad-primary); }
+    .featured-project:hover { border-color:var(--border); box-shadow:var(--shadow-glow),var(--shadow); }
+    .featured-img-wrap { overflow:hidden; position:relative; }
+    .featured-img { width:100%; height:100%; min-height:340px; object-fit:cover; display:block; transition:transform 0.5s ease; }
+    .featured-project:hover .featured-img { transform:scale(1.04); }
+    .featured-img-badge { position:absolute; top:18px; left:18px; display:flex; gap:8px; }
+    .featured-body { padding:44px; display:flex; flex-direction:column; justify-content:center; }
     .featured-label {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      font-family:var(--mono); font-size:11px; text-transform:uppercase;
+      letter-spacing:2.5px; margin-bottom:14px;
+      display:flex; align-items:center; gap:8px;
+      background:var(--grad-primary); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
     }
-    .featured-label::before { content: ''; width: 16px; height: 1px; background: var(--accent); }
-    .featured-title {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--text-primary);
-      letter-spacing: -0.02em;
-      margin-bottom: 14px;
-      line-height: 1.2;
-    }
-    .featured-desc {
-      font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 1.78;
-      margin-bottom: 28px;
-    }
-    .featured-results {
-      display: flex;
-      gap: 28px;
-      margin-bottom: 28px;
-      padding: 18px 20px;
-      background: rgba(79,142,247,0.05);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius);
-    }
-    .featured-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
-    .featured-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .featured-label::before { content:''; width:18px; height:1px; background:var(--grad-primary); }
+    .featured-title { font-size:28px; font-weight:800; color:var(--text-primary); letter-spacing:-0.025em; margin-bottom:14px; line-height:1.2; }
+    .featured-desc  { font-size:15px; color:var(--text-secondary); line-height:1.8; margin-bottom:26px; }
+    .featured-results { display:flex; gap:28px; margin-bottom:26px; padding:18px 22px; background:rgba(108,99,255,0.05); border:1px solid var(--border-subtle); border-radius:var(--radius); flex-wrap:wrap; }
+    .featured-stack   { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+    .featured-actions { display:flex; gap:12px; flex-wrap:wrap; }
 
     /* ===== RESPONSIVE ===== */
-    @media (max-width: 1024px) {
-      .all-projects-grid { grid-template-columns: repeat(2, 1fr); }
-      .featured-project { grid-template-columns: 1fr; }
-      .featured-img { min-height: 240px; }
-      .featured-body { padding: 28px; }
+    @media (max-width:1024px) {
+      .all-projects-grid { grid-template-columns:repeat(2,1fr); }
+      .featured-project  { grid-template-columns:1fr; }
+      .featured-img { min-height:240px; }
+      .featured-body { padding:30px; }
     }
-    @media (max-width: 768px) {
-      .all-projects-grid { grid-template-columns: 1fr; }
-      .featured-title { font-size: 22px; }
+    @media (max-width:768px) {
+      .all-projects-grid { grid-template-columns:1fr; }
+      .featured-title { font-size:22px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ===================== NAVBAR ===================== -->
+<!-- NAVBAR -->
 <nav id="navbar">
   <div class="container">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">VK<span>.</span></a>
+      <a href="index.html" class="nav-logo">VK.</a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="index.html#about">About</a></li>
@@ -253,8 +130,6 @@
     </div>
   </div>
 </nav>
-
-<!-- Mobile Nav -->
 <div class="mobile-nav">
   <button class="mobile-nav-close">✕</button>
   <ul class="mobile-nav-links">
@@ -266,21 +141,17 @@
     <li><a href="blog.html">Blog</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <div class="mobile-nav-footer">
-    <a href="contact.html" class="btn btn-primary">Hire Me →</a>
-  </div>
+  <div class="mobile-nav-footer"><a href="contact.html" class="btn btn-primary">Hire Me →</a></div>
 </div>
 
-<!-- ===================== PAGE HERO ===================== -->
+<!-- PAGE HERO -->
 <section class="page-hero">
-  <div class="orb orb-1"></div>
+  <div class="orb orb-purple"></div>
+  <div class="orb orb-cyan"></div>
   <div class="container">
     <div class="page-hero-label">Portfolio</div>
-    <h1 class="page-hero-title fade-up">Real Projects.<br/><span style="color:var(--accent)">Real Results.</span></h1>
-    <p class="page-hero-desc fade-up delay-1">
-      Every project here was built to solve a real business problem.
-      Below you'll find case studies with the problem, solution, tech stack, and measurable outcomes.
-    </p>
+    <h1 class="page-hero-title fade-up">Real Projects.<br/><span style="background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Real Results.</span></h1>
+    <p class="page-hero-desc fade-up delay-1">Every project here solves a real business problem. Each case study shows the problem, solution, tech stack, and measurable outcomes.</p>
     <div class="breadcrumb fade-up delay-2">
       <a href="index.html">Home</a>
       <span class="breadcrumb-sep">/</span>
@@ -289,58 +160,32 @@
   </div>
 </section>
 
-<!-- ===================== PROJECTS ===================== -->
+<!-- PROJECTS -->
 <section class="section">
   <div class="container">
 
-    <!-- Featured Project -->
-    <div class="fade-up mb-16">
-      <span class="section-label">Featured Work</span>
-    </div>
-
+    <!-- Featured -->
+    <div class="fade-up mb-16"><span class="section-label">Featured Work</span></div>
     <div class="featured-project fade-up delay-1">
       <div class="featured-img-wrap">
-        <img class="featured-img"
-          src="https://placehold.co/640x400/111827/4F8EF7?text=SaaS+Analytics+Dashboard"
-          alt="SaaS Analytics Dashboard"
-          loading="lazy"
-        />
-        <div class="featured-img-badge">
-          <span class="tag">Featured</span>
-          <span class="tag tag-green">Web App</span>
-        </div>
+        <img class="featured-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=640&h=400&fit=crop" alt="SaaS Dashboard" loading="lazy"/>
+        <div class="featured-img-badge"><span class="tag">Featured</span><span class="tag tag-green">Web App</span></div>
       </div>
       <div class="featured-body">
         <div class="featured-label">Case Study #1</div>
         <h2 class="featured-title">SaaS Analytics Dashboard</h2>
-        <p class="featured-desc">
-          Built a real-time analytics platform for a B2B startup tracking user behavior,
-          revenue metrics, and funnel performance across 5,000+ active users.
-          Reduced page load time by 3x and improved user retention by 40%.
-        </p>
+        <p class="featured-desc">Built a real-time analytics platform for a B2B startup. Reduced page load 3x, improved user retention by 40%, achieved 98 Lighthouse score across 5,000+ daily active users.</p>
         <div class="featured-results">
-          <div class="ts-item">
-            <span class="ts-num" style="font-size:22px;">3x</span>
-            <span class="ts-label">Faster Load</span>
-          </div>
+          <div class="ts-item"><span class="ts-num" style="font-size:22px;">3x</span><span class="ts-label">Faster Load</span></div>
           <div class="ts-sep"></div>
-          <div class="ts-item">
-            <span class="ts-num" style="font-size:22px;">40%</span>
-            <span class="ts-label">Retention↑</span>
-          </div>
+          <div class="ts-item"><span class="ts-num" style="font-size:22px;">40%</span><span class="ts-label">Retention↑</span></div>
           <div class="ts-sep"></div>
-          <div class="ts-item">
-            <span class="ts-num" style="font-size:22px;">98</span>
-            <span class="ts-label">Lighthouse</span>
-          </div>
+          <div class="ts-item"><span class="ts-num" style="font-size:22px;">98</span><span class="ts-label">Lighthouse</span></div>
         </div>
         <div class="featured-stack">
-          <span class="skill-tag">Next.js</span>
-          <span class="skill-tag">Node.js</span>
-          <span class="skill-tag">PostgreSQL</span>
-          <span class="skill-tag">Redis</span>
-          <span class="skill-tag">AWS EC2</span>
-          <span class="skill-tag">Chart.js</span>
+          <span class="skill-tag">Next.js</span><span class="skill-tag">Node.js</span>
+          <span class="skill-tag">PostgreSQL</span><span class="skill-tag">Redis</span>
+          <span class="skill-tag">AWS EC2</span><span class="skill-tag">Chart.js</span>
         </div>
         <div class="featured-actions">
           <a href="contact.html" class="btn btn-primary">Discuss Similar Project →</a>
@@ -349,12 +194,11 @@
       </div>
     </div>
 
-    <!-- Filter Bar -->
+    <!-- Filter -->
     <div class="fade-up">
       <span class="section-label">All Projects</span>
-      <h2 class="section-title mb-32">Complete Portfolio</h2>
+      <h2 class="section-title mb-32">Complete <span style="background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Portfolio</span></h2>
     </div>
-
     <div class="filter-bar fade-up delay-1">
       <button class="filter-btn active" data-filter="all">All Projects</button>
       <button class="filter-btn" data-filter="webapp">Web App</button>
@@ -363,204 +207,114 @@
       <button class="filter-btn" data-filter="website">Business Website</button>
     </div>
 
-    <!-- All Projects Grid -->
+    <!-- Grid -->
     <div class="all-projects-grid">
 
-      <!-- Project 1 -->
       <div class="proj-card fade-up" data-category="ecommerce">
         <div class="proj-img-wrap">
-          <img class="proj-img"
-            src="https://placehold.co/600x200/111827/34D399?text=Multi-Vendor+Marketplace"
-            alt="Multi-Vendor Marketplace" loading="lazy"
-          />
-          <div class="proj-badge-wrap">
-            <span class="tag">eCommerce</span>
-          </div>
+          <img class="proj-img" src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=600&h=200&fit=crop" alt="Marketplace" loading="lazy"/>
+          <div class="proj-badge-wrap"><span class="tag">eCommerce</span></div>
         </div>
         <div class="proj-body">
           <h3 class="proj-title">Multi-Vendor Marketplace</h3>
-          <p class="proj-desc">Fashion marketplace with 150+ vendors, live inventory management, Razorpay payments, and automated vendor payout system.</p>
+          <p class="proj-desc">Fashion marketplace with 150+ vendors, live inventory, Razorpay payments, and automated vendor payout system.</p>
           <div class="proj-results">
             <div class="pr-item"><span class="pr-num">₹12L</span><span class="pr-label">Month 1 GMV</span></div>
             <div class="pr-item"><span class="pr-num">150+</span><span class="pr-label">Vendors</span></div>
             <div class="pr-item"><span class="pr-num">2.1s</span><span class="pr-label">Load Time</span></div>
           </div>
-          <div class="proj-stack">
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Express.js</span>
-            <span class="skill-tag">MongoDB</span>
-            <span class="skill-tag">Razorpay</span>
-            <span class="skill-tag">Cloudinary</span>
-          </div>
-          <div class="proj-footer">
-            <a href="contact.html" class="proj-link">Discuss Project →</a>
-            <span class="proj-year">2024</span>
-          </div>
+          <div class="proj-stack"><span class="skill-tag">React</span><span class="skill-tag">Express.js</span><span class="skill-tag">MongoDB</span><span class="skill-tag">Razorpay</span></div>
+          <div class="proj-footer"><a href="contact.html" class="proj-link">Discuss Project →</a><span class="proj-year">2024</span></div>
         </div>
       </div>
 
-      <!-- Project 2 -->
       <div class="proj-card fade-up delay-1" data-category="webapp">
         <div class="proj-img-wrap">
-          <img class="proj-img"
-            src="https://placehold.co/600x200/111827/FBBF24?text=EdTech+Learning+Platform"
-            alt="EdTech Platform" loading="lazy"
-          />
-          <div class="proj-badge-wrap">
-            <span class="tag">Web App</span>
-          </div>
+          <img class="proj-img" src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=200&fit=crop" alt="EdTech" loading="lazy"/>
+          <div class="proj-badge-wrap"><span class="tag">Web App</span></div>
         </div>
         <div class="proj-body">
           <h3 class="proj-title">EdTech Learning Platform</h3>
-          <p class="proj-desc">Full LMS with live classes via WebRTC, quiz engine, progress tracking, automated certificates, and 200+ courses for 8,000+ students.</p>
+          <p class="proj-desc">Full LMS with live classes via WebRTC, quiz engine, progress tracking, certificates for 8,000+ students across 200+ courses.</p>
           <div class="proj-results">
             <div class="pr-item"><span class="pr-num">8K+</span><span class="pr-label">Students</span></div>
             <div class="pr-item"><span class="pr-num">200+</span><span class="pr-label">Courses</span></div>
             <div class="pr-item"><span class="pr-num">99.9%</span><span class="pr-label">Uptime</span></div>
           </div>
-          <div class="proj-stack">
-            <span class="skill-tag">Next.js</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">PostgreSQL</span>
-            <span class="skill-tag">WebRTC</span>
-            <span class="skill-tag">Socket.io</span>
-          </div>
-          <div class="proj-footer">
-            <a href="contact.html" class="proj-link">Discuss Project →</a>
-            <span class="proj-year">2024</span>
-          </div>
+          <div class="proj-stack"><span class="skill-tag">Next.js</span><span class="skill-tag">Node.js</span><span class="skill-tag">WebRTC</span><span class="skill-tag">Socket.io</span></div>
+          <div class="proj-footer"><a href="contact.html" class="proj-link">Discuss Project →</a><span class="proj-year">2024</span></div>
         </div>
       </div>
 
-      <!-- Project 3 -->
       <div class="proj-card fade-up delay-2" data-category="backend">
         <div class="proj-img-wrap">
-          <img class="proj-img"
-            src="https://placehold.co/600x200/111827/A78BFA?text=REST+API+Platform"
-            alt="REST API Platform" loading="lazy"
-          />
-          <div class="proj-badge-wrap">
-            <span class="tag">API / Backend</span>
-          </div>
+          <img class="proj-img" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=200&fit=crop" alt="REST API" loading="lazy"/>
+          <div class="proj-badge-wrap"><span class="tag">API / Backend</span></div>
         </div>
         <div class="proj-body">
           <h3 class="proj-title">Logistics REST API Platform</h3>
-          <p class="proj-desc">Scalable REST API for a logistics startup managing shipment tracking, driver assignments, and real-time location updates for 50K+ daily requests.</p>
+          <p class="proj-desc">Scalable REST API for a logistics startup managing shipment tracking, driver assignments, and real-time location — 50K+ daily requests.</p>
           <div class="proj-results">
             <div class="pr-item"><span class="pr-num">50K</span><span class="pr-label">Daily Reqs</span></div>
             <div class="pr-item"><span class="pr-num">99ms</span><span class="pr-label">Avg Latency</span></div>
             <div class="pr-item"><span class="pr-num">99.8%</span><span class="pr-label">Uptime</span></div>
           </div>
-          <div class="proj-stack">
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Express.js</span>
-            <span class="skill-tag">PostgreSQL</span>
-            <span class="skill-tag">Redis</span>
-            <span class="skill-tag">Docker</span>
-          </div>
-          <div class="proj-footer">
-            <a href="contact.html" class="proj-link">Discuss Project →</a>
-            <span class="proj-year">2023</span>
-          </div>
+          <div class="proj-stack"><span class="skill-tag">Node.js</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">Redis</span><span class="skill-tag">Docker</span></div>
+          <div class="proj-footer"><a href="contact.html" class="proj-link">Discuss Project →</a><span class="proj-year">2024</span></div>
         </div>
       </div>
 
-      <!-- Project 4 -->
       <div class="proj-card fade-up" data-category="website">
         <div class="proj-img-wrap">
-          <img class="proj-img"
-            src="https://placehold.co/600x200/111827/F87171?text=Corporate+Website"
-            alt="Corporate Website" loading="lazy"
-          />
-          <div class="proj-badge-wrap">
-            <span class="tag">Website</span>
-          </div>
+          <img class="proj-img" src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=200&fit=crop" alt="Corporate" loading="lazy"/>
+          <div class="proj-badge-wrap"><span class="tag">Website</span></div>
         </div>
         <div class="proj-body">
           <h3 class="proj-title">Corporate Website Revamp</h3>
-          <p class="proj-desc">Complete redesign and rebuild of a manufacturing company's website. Improved SEO rankings, reduced bounce rate by 35%, and doubled inquiry form submissions.</p>
+          <p class="proj-desc">Complete redesign of a manufacturing company website. Improved SEO, reduced bounce rate 35%, doubled inquiry form submissions in 30 days.</p>
           <div class="proj-results">
             <div class="pr-item"><span class="pr-num">2x</span><span class="pr-label">Inquiries</span></div>
             <div class="pr-item"><span class="pr-num">35%</span><span class="pr-label">Bounce↓</span></div>
             <div class="pr-item"><span class="pr-num">P1</span><span class="pr-label">Google Rank</span></div>
           </div>
-          <div class="proj-stack">
-            <span class="skill-tag">Next.js</span>
-            <span class="skill-tag">Tailwind CSS</span>
-            <span class="skill-tag">Sanity CMS</span>
-            <span class="skill-tag">Vercel</span>
-          </div>
-          <div class="proj-footer">
-            <a href="contact.html" class="proj-link">Discuss Project →</a>
-            <span class="proj-year">2023</span>
-          </div>
+          <div class="proj-stack"><span class="skill-tag">Next.js</span><span class="skill-tag">Tailwind CSS</span><span class="skill-tag">Sanity CMS</span><span class="skill-tag">Vercel</span></div>
+          <div class="proj-footer"><a href="contact.html" class="proj-link">Discuss Project →</a><span class="proj-year">2023</span></div>
         </div>
       </div>
 
-      <!-- Project 5 -->
       <div class="proj-card fade-up delay-1" data-category="webapp">
         <div class="proj-img-wrap">
-          <img class="proj-img"
-            src="https://placehold.co/600x200/111827/34D399?text=Hospital+Management+App"
-            alt="Hospital App" loading="lazy"
-          />
-          <div class="proj-badge-wrap">
-            <span class="tag">Web App</span>
-          </div>
+          <img class="proj-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=200&fit=crop" alt="Hospital" loading="lazy"/>
+          <div class="proj-badge-wrap"><span class="tag">Web App</span></div>
         </div>
         <div class="proj-body">
           <h3 class="proj-title">Hospital Management System</h3>
-          <p class="proj-desc">Full-stack hospital management app with patient records, appointment scheduling, doctor dashboard, billing, and pharmacy module for a 200-bed hospital.</p>
+          <p class="proj-desc">Full hospital system with patient records, appointment scheduling, doctor dashboard, billing, and pharmacy module for a 200-bed hospital.</p>
           <div class="proj-results">
             <div class="pr-item"><span class="pr-num">200</span><span class="pr-label">Bed Hospital</span></div>
             <div class="pr-item"><span class="pr-num">60%</span><span class="pr-label">Time Saved</span></div>
             <div class="pr-item"><span class="pr-num">500+</span><span class="pr-label">Daily Users</span></div>
           </div>
-          <div class="proj-stack">
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">MySQL</span>
-            <span class="skill-tag">Prisma ORM</span>
-            <span class="skill-tag">AWS</span>
-          </div>
-          <div class="proj-footer">
-            <a href="contact.html" class="proj-link">Discuss Project →</a>
-            <span class="proj-year">2023</span>
-          </div>
+          <div class="proj-stack"><span class="skill-tag">React</span><span class="skill-tag">Node.js</span><span class="skill-tag">MySQL</span><span class="skill-tag">AWS</span></div>
+          <div class="proj-footer"><a href="contact.html" class="proj-link">Discuss Project →</a><span class="proj-year">2023</span></div>
         </div>
       </div>
 
-      <!-- Project 6 -->
       <div class="proj-card fade-up delay-2" data-category="ecommerce">
         <div class="proj-img-wrap">
-          <img class="proj-img"
-            src="https://placehold.co/600x200/111827/FBBF24?text=Food+Delivery+App"
-            alt="Food Delivery" loading="lazy"
-          />
-          <div class="proj-badge-wrap">
-            <span class="tag">eCommerce</span>
-            <span class="tag tag-green">PWA</span>
-          </div>
+          <img class="proj-img" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=200&fit=crop" alt="Food Delivery" loading="lazy"/>
+          <div class="proj-badge-wrap"><span class="tag">eCommerce</span><span class="tag tag-green">PWA</span></div>
         </div>
         <div class="proj-body">
           <h3 class="proj-title">Food Delivery PWA</h3>
-          <p class="proj-desc">Progressive web app for a cloud kitchen chain with real-time order tracking, driver location on map, loyalty points, and offline menu browsing.</p>
+          <p class="proj-desc">Progressive web app for a cloud kitchen chain with real-time order tracking, driver location map, loyalty points, and offline menu browsing.</p>
           <div class="proj-results">
             <div class="pr-item"><span class="pr-num">3.2K</span><span class="pr-label">Orders/Day</span></div>
             <div class="pr-item"><span class="pr-num">4.8★</span><span class="pr-label">App Rating</span></div>
             <div class="pr-item"><span class="pr-num">1.8s</span><span class="pr-label">Load Time</span></div>
           </div>
-          <div class="proj-stack">
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">MongoDB</span>
-            <span class="skill-tag">Socket.io</span>
-            <span class="skill-tag">PWA</span>
-          </div>
-          <div class="proj-footer">
-            <a href="contact.html" class="proj-link">Discuss Project →</a>
-            <span class="proj-year">2022</span>
-          </div>
+          <div class="proj-stack"><span class="skill-tag">React</span><span class="skill-tag">Socket.io</span><span class="skill-tag">MongoDB</span><span class="skill-tag">PWA</span></div>
+          <div class="proj-footer"><a href="contact.html" class="proj-link">Discuss Project →</a><span class="proj-year">2023</span></div>
         </div>
       </div>
 
@@ -568,33 +322,32 @@
   </div>
 </section>
 
-<!-- ===================== CTA ===================== -->
+<!-- CTA -->
 <section class="cta-section">
   <div class="container">
     <div class="fade-up">
-      <p class="mono text-accent" style="font-size:12px; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px;">Your project next?</p>
+      <span class="section-label" style="justify-content:center;margin-bottom:16px;">Your project next?</span>
       <h2 class="cta-title">Have a Project in Mind?</h2>
       <p class="cta-desc">Let's discuss your idea and turn it into a product that delivers real business results.</p>
       <div class="cta-actions">
-        <a href="contact.html" class="btn btn-primary btn-lg">Start a Project →</a>
-        <a href="services.html" class="btn btn-outline btn-lg">View Services</a>
+        <a href="contact.html" class="btn btn-primary btn-xl">Start a Project →</a>
+        <a href="services.html" class="btn btn-glass btn-xl">View Services</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== FOOTER ===================== -->
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-top">
       <div>
-        <a href="index.html" class="footer-logo">VK<span>.</span></a>
+        <a href="index.html" class="footer-logo">VK.</a>
         <p class="footer-tagline">Full-Stack Web Developer building fast, scalable, and conversion-focused digital products for businesses worldwide.</p>
         <div class="social-links">
-          <a href="#" class="social-link" title="GitHub">GH</a>
-          <a href="#" class="social-link" title="LinkedIn">in</a>
-          <a href="#" class="social-link" title="Twitter">𝕏</a>
-          <a href="#" class="social-link" title="Dribbble">Dr</a>
+          <a href="#" class="social-link"><span class="sl-text">in</span></a>
+          <a href="#" class="social-link"><span class="sl-text">𝕏</span></a>
+          <a href="#" class="social-link"><span class="sl-text">Dr</span></a>
         </div>
       </div>
       <div>
@@ -620,7 +373,7 @@
       <div>
         <div class="footer-col-title">Get In Touch</div>
         <ul class="footer-links">
-          <li><a href="mailto:vishalofficial9189@gmail.com">vishalofficial9189@gmail.com</a></li>
+          <li><a href="mailto:Vishal.studio.live@gmail.com">Vishal.studio.live@gmail.com</a></li>
           <li><a href="tel:+919979581737">+91 99795 81737</a></li>
           <li><a href="#">Download Resume</a></li>
           <li><a href="contact.html">Schedule a Call</a></li>
@@ -628,22 +381,14 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2025 <span>Vishal Kumar</span>. All rights reserved.</p>
-      <div class="footer-bottom-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-      </div>
+      <p class="footer-copy">© 2025 <span class="grad">Vishal Kumar</span>. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
     </div>
   </div>
 </footer>
 
-<!-- WhatsApp Float -->
-<a href="https://wa.me/919979581737" class="whatsapp-float" target="_blank" rel="noopener" title="Chat on WhatsApp">💬</a>
-
-<!-- Scroll to Top -->
+<a href="https://wa.me/919979581737" class="whatsapp-float" target="_blank" rel="noopener">💬</a>
 <button class="scroll-top" aria-label="Scroll to top">↑</button>
-
-<!-- Scripts -->
 <script src="assets/js/animations.js"></script>
 <script src="assets/js/main.js"></script>
 </body>

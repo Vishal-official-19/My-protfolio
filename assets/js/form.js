@@ -1,127 +1,133 @@
 /* ============================================================
-   CONTACT FORM + EMAILJS
-   File: assets/js/form.js
+   FORM JS v2.0 — EmailJS + Razorpay Payment
+   
+   SETUP:
+   1. EmailJS: emailjs.com → Free account → Service + Template banao
+      Replace: EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY
 
-   Setup:
-   1. Go to https://www.emailjs.com → Free account banao
-   2. "Add New Service" → Gmail/Outlook connect karo
-   3. "Email Templates" → Template banao (variables: {{from_name}}, {{from_email}}, {{message}})
-   4. "Account" → Public Key copy karo
-   5. Neeche SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY replace karo
+   2. Razorpay: dashboard.razorpay.com → Test Mode Key copy karo
+      Replace: RAZORPAY_KEY_ID
    ============================================================ */
-
 'use strict';
 
-/* ── EmailJS Config (apni values yahan daalo) ── */
-const EMAILJS_SERVICE_ID  = 'TFHsThsD8W1VVF_dGoati';
-const EMAILJS_TEMPLATE_ID = 'template_j9iu1ir';
-const EMAILJS_PUBLIC_KEY  = 'zN20uxb5foHYszb_9';
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
+const RAZORPAY_KEY_ID     = 'rzp_test_YourKeyHere';
 
-/* ── Form Elements ── */
-const contactForm   = document.getElementById('contact-form');
-const submitBtn     = document.getElementById('form-submit-btn');
-const successBox    = document.getElementById('form-success-box');
-
-/* ── Validation Rules ── */
+/* ── Validation ── */
 const validators = {
-  name: (v) => v.trim().length >= 2 || 'Name must be at least 2 characters',
-  email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || 'Please enter a valid email address',
-  message: (v) => v.trim().length >= 20 || 'Message must be at least 20 characters',
+  name:    v => v.trim().length >= 2    || 'Name must be at least 2 characters',
+  email:   v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || 'Enter a valid email address',
+  message: v => v.trim().length >= 20   || 'Message must be at least 20 characters',
 };
 
-/* ── Show / Clear field error ── */
-function setError(fieldId, message) {
-  const input = document.getElementById(fieldId);
-  const errEl = document.getElementById(`${fieldId}-error`);
-  input?.classList.add('error');
-  if (errEl) { errEl.textContent = message; errEl.classList.add('show'); }
-}
+function setError(id, msg)  { const i = document.getElementById(id); const e = document.getElementById(`${id}-error`); i?.classList.add('error'); if (e) { e.textContent = msg; e.classList.add('show'); } }
+function clearError(id)     { document.getElementById(id)?.classList.remove('error'); document.getElementById(`${id}-error`)?.classList.remove('show'); }
 
-function clearError(fieldId) {
-  const input = document.getElementById(fieldId);
-  const errEl = document.getElementById(`${fieldId}-error`);
-  input?.classList.remove('error');
-  errEl?.classList.remove('show');
-}
-
-/* ── Live validation on blur ── */
-['name', 'email', 'message'].forEach((id) => {
+['name','email','message'].forEach(id => {
   const el = document.getElementById(id);
-  el?.addEventListener('blur', () => {
-    const result = validators[id]?.(el.value);
-    if (result !== true) setError(id, result);
-    else clearError(id);
-  });
-
+  el?.addEventListener('blur',  () => { const r = validators[id]?.(el.value); if (r !== true) setError(id, r); else clearError(id); });
   el?.addEventListener('input', () => clearError(id));
 });
 
-/* ── Form Submit ── */
-contactForm?.addEventListener('submit', async (e) => {
+/* ── Contact Form Submit ── */
+const contactForm = document.getElementById('contact-form');
+const submitBtn   = document.getElementById('form-submit-btn');
+const successBox  = document.getElementById('form-success-box');
+
+contactForm?.addEventListener('submit', async e => {
   e.preventDefault();
-
-  const name    = document.getElementById('name')?.value ?? '';
-  const email   = document.getElementById('email')?.value ?? '';
-  const phone   = document.getElementById('phone')?.value ?? '';
-  const budget  = document.getElementById('budget')?.value ?? '';
-  const service = document.getElementById('service')?.value ?? '';
-  const message = document.getElementById('message')?.value ?? '';
-
-  /* Validate */
   let hasError = false;
-  ['name', 'email', 'message'].forEach((id) => {
+  ['name','email','message'].forEach(id => {
     const el = document.getElementById(id);
-    const result = validators[id]?.(el.value);
-    if (result !== true) {
-      setError(id, result);
-      hasError = true;
-    }
+    const r  = validators[id]?.(el?.value || '');
+    if (r !== true) { setError(id, r); hasError = true; }
   });
-
   if (hasError) return;
 
-  /* Disable button */
   submitBtn.textContent = 'Sending…';
   submitBtn.disabled = true;
 
-  /* Send via EmailJS */
   try {
-    const now = new Date();
-    const timeString = now.toLocaleString('en-US', { 
-      dateStyle: 'medium', 
-      timeStyle: 'short' 
-    });
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      from_name:    document.getElementById('name')?.value,
+      from_email:   document.getElementById('email')?.value,
+      phone:        document.getElementById('phone')?.value || 'Not provided',
+      budget:       document.getElementById('budget')?.value || 'Not specified',
+      service_type: document.getElementById('service')?.value || 'Not specified',
+      message:      document.getElementById('message')?.value,
+      reply_to:     document.getElementById('email')?.value,
+    }, EMAILJS_PUBLIC_KEY);
 
-    await emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
-      {
-        name:         name,
-        from_email:   email,
-        phone:        phone || 'Not provided',
-        budget:       budget || 'Not specified',
-        service:      service || 'Not specified',
-        message:      message,
-        time:         timeString,
-        reply_to:     email,
-      }
-    );
-
-    /* Success */
     contactForm.reset();
     submitBtn.style.display = 'none';
     successBox?.classList.add('show');
-
   } catch (err) {
-    console.error('EmailJS Error Details:', {
-      error: err,
-      serviceId: EMAILJS_SERVICE_ID,
-      templateId: EMAILJS_TEMPLATE_ID,
-      message: err.message,
-      status: err.status
-    });
+    console.error(err);
     submitBtn.textContent = 'Failed — Try Again';
     submitBtn.disabled = false;
-    alert(`Error: ${err.message || 'Something went wrong. Please email directly: vishalofficial9189@gmail.com'}`);
   }
+});
+
+/* ── Razorpay Payment ── */
+window.initRazorpayPayment = function({ amount, name, description, prefill = {} }) {
+  /* amount in rupees — will convert to paise */
+  const options = {
+    key: RAZORPAY_KEY_ID,
+    amount: amount * 100,
+    currency: 'INR',
+    name: 'Vishal Kumar',
+    description: description || 'Web Development Service',
+    image: 'assets/images/logo.png',
+    prefill: {
+      name:    prefill.name  || '',
+      email:   prefill.email || '',
+      contact: prefill.phone || '',
+    },
+    theme: { color: '#7c5cff' },
+    handler: function(response) {
+      /* Payment Success */
+      document.getElementById('payment-success-box')?.classList.add('show');
+      document.getElementById('payment-id-display')
+        && (document.getElementById('payment-id-display').textContent = response.razorpay_payment_id);
+
+      /* Send confirmation email */
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        from_name:  prefill.name  || 'Client',
+        from_email: prefill.email || '',
+        phone:      prefill.phone || '',
+        message:    `Payment Successful! ID: ${response.razorpay_payment_id} | Amount: ₹${amount}`,
+        service_type: description,
+      }, EMAILJS_PUBLIC_KEY).catch(console.error);
+    },
+    modal: {
+      ondismiss: () => console.log('Payment modal closed'),
+    },
+  };
+
+  const rzp = new Razorpay(options);
+  rzp.open();
+};
+
+/* ── Service Payment Buttons ── */
+document.querySelectorAll('[data-pay]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const amount   = parseInt(btn.dataset.amount, 10);
+    const service  = btn.dataset.service;
+    const nameVal  = document.getElementById('pay-name')?.value.trim();
+    const emailVal = document.getElementById('pay-email')?.value.trim();
+
+    if (!nameVal || !emailVal) {
+      alert('Please enter your Name and Email before proceeding to payment.');
+      document.getElementById('pay-name')?.focus();
+      return;
+    }
+
+    window.initRazorpayPayment({
+      amount,
+      description: service,
+      prefill: { name: nameVal, email: emailVal },
+    });
+  });
 });
