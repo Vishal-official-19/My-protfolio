@@ -10,9 +10,11 @@
    ============================================================ */
 'use strict';
 
-const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
+// 🔧 CONFIGURE THESE:
+// Go to https://www.emailjs.com → Account → Copy your IDs
+const EMAILJS_SERVICE_ID  = 'service_f2ka06r';  // Replace with your Service ID
+const EMAILJS_TEMPLATE_ID = 'template_b3603i1'; // Replace with your Template ID
+const EMAILJS_PUBLIC_KEY  = 'zN20uxb5foHYszb_9';  // Replace with your Public Key
 const RAZORPAY_KEY_ID     = 'rzp_test_YourKeyHere';
 
 /* ── Validation ── */
@@ -51,12 +53,12 @@ contactForm?.addEventListener('submit', async e => {
 
   try {
     await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      from_name:    document.getElementById('name')?.value,
-      from_email:   document.getElementById('email')?.value,
+      from_name:    document.getElementById('name')?.value || 'Not provided',
+      from_email:   document.getElementById('email')?.value || 'Not provided',
       phone:        document.getElementById('phone')?.value || 'Not provided',
       budget:       document.getElementById('budget')?.value || 'Not specified',
       service_type: document.getElementById('service')?.value || 'Not specified',
-      message:      document.getElementById('message')?.value,
+      message:      document.getElementById('message')?.value || 'No message',
       reply_to:     document.getElementById('email')?.value,
     }, EMAILJS_PUBLIC_KEY);
 
@@ -98,36 +100,9 @@ window.initRazorpayPayment = function({ amount, name, description, prefill = {} 
         from_email: prefill.email || '',
         phone:      prefill.phone || '',
         message:    `Payment Successful! ID: ${response.razorpay_payment_id} | Amount: ₹${amount}`,
-        service_type: description,
-      }, EMAILJS_PUBLIC_KEY).catch(console.error);
-    },
-    modal: {
-      ondismiss: () => console.log('Payment modal closed'),
+      }, EMAILJS_PUBLIC_KEY);
     },
   };
-
   const rzp = new Razorpay(options);
   rzp.open();
 };
-
-/* ── Service Payment Buttons ── */
-document.querySelectorAll('[data-pay]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const amount   = parseInt(btn.dataset.amount, 10);
-    const service  = btn.dataset.service;
-    const nameVal  = document.getElementById('pay-name')?.value.trim();
-    const emailVal = document.getElementById('pay-email')?.value.trim();
-
-    if (!nameVal || !emailVal) {
-      alert('Please enter your Name and Email before proceeding to payment.');
-      document.getElementById('pay-name')?.focus();
-      return;
-    }
-
-    window.initRazorpayPayment({
-      amount,
-      description: service,
-      prefill: { name: nameVal, email: emailVal },
-    });
-  });
-});

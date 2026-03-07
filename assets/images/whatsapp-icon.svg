@@ -1,0 +1,16 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- White outer border circle -->
+  <circle cx="50" cy="50" r="48" fill="white"/>
+  
+  <!-- Green main background -->
+  <circle cx="50" cy="50" r="43" fill="#25D366"/>
+  
+  <!-- White speech bubble on left side -->
+  <path d="M 32 40 Q 28 40 28 44 L 28 68 Q 28 72 32 72 L 52 72 Q 56 72 56 68 L 56 44 Q 56 40 52 40 L 32 40 M 30 72 L 20 80 L 30 72" fill="white"/>
+  
+  <!-- White phone handset icon (official WhatsApp phone) -->
+  <g transform="translate(50, 48)">
+    <path d="M -11 -8 Q -13 -10 -9 -14 Q -5 -18 1 -18 Q 7 -18 11 -14 Q 15 -10 13 -8 Q 11 -6 9 -8 Q 6 -10 1 -10 Q -4 -10 -7 -8 Q -9 -6 -11 -8 Z M -13 -6 Q -15 -4 -13 2 Q -11 8 -5 12 Q 1 16 7 14 Q 13 12 15 6 Q 17 0 15 -4 Q 13 -6 11 -4 Q 10 -2 9 2 Q 8 6 3 9 Q -2 11 -5 8 Q -9 5 -10 0 Q -11 -4 -11 -6 Q -12 -8 -13 -6 Z" 
+          fill="white" stroke="none"/>
+  </g>
+</svg>
